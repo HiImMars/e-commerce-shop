@@ -3,7 +3,10 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const BASE_URL = "https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com";
 
 const headers = {
-  "X-RapidAPI-Key": "d5d45c5551mshf781b08938bcc13p1a8703jsn4e574d8a7588",
+  // "X-RapidAPI-Key": "d5d45c5551mshf781b08938bcc13p1a8703jsn4e574d8a7588",
+  // "X-RapidAPI-Host": "apidojo-hm-hennes-mauritz-v1.p.rapidapi.com",
+
+  "X-RapidAPI-Key": "7c6e674495msh82adf60ddb93753p18b7fejsn292c286cf70f",
   "X-RapidAPI-Host": "apidojo-hm-hennes-mauritz-v1.p.rapidapi.com",
 };
 
@@ -16,7 +19,7 @@ export const productsApi = createApi({
     getAllProducts: builder.query({
       query: () =>
         createRequest(
-          "/products/list?country=us&lang=en&currentpage=0&pagesize=30"
+          "/products/list?country=us&lang=en&currentpage=2&pagesize=30"
         ),
     }),
     getAllCategories: builder.query({
