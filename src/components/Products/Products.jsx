@@ -1,70 +1,86 @@
 import React, { useState } from "react";
 import {
   useGetAllProductsQuery,
-  useGetAllCategoriesQuery,
+  useGetInSpecificCategoryQuery,
 } from "../../services/productsApi";
 import ProductItem from "../ProductItem/ProductItem";
 import Pagination from "../Pagination/Pagination";
+import Categories from "../Categories/Categories";
 
 const Products = () => {
-  // const { data } = useGetAllProductsQuery();
-  // const { data: categories } = useGetAllCategoriesQuery();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [categoryClicked, setCategoryClicked] = useState("");
+  const [clickedAll, setClickedAll] = useState(true);
 
   const productsQuery = useGetAllProductsQuery();
-  const categoriesQuery = useGetAllCategoriesQuery();
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage, setProductsPerPage] = useState(6);
+  const productsByCategoryQuery =
+    useGetInSpecificCategoryQuery(categoryClicked);
 
   const data = productsQuery.data;
-  const categories = categoriesQuery.data;
 
-  if (productsQuery.isLoading || categoriesQuery.isLoading) {
+  if (productsQuery.isLoading || productsByCategoryQuery.isLoading) {
     return <p>Loading...</p>;
   }
 
-  if (productsQuery.isError || categoriesQuery.isError) {
+  if (productsQuery.isError || productsByCategoryQuery.isError) {
     return <p>Error loading data</p>;
   }
 
+  const productsPerPage = 6;
   const lastProductIndex = currentPage * productsPerPage;
   const firstProductIndex = lastProductIndex - productsPerPage;
-  const currentProducts = data?.results?.slice(
-    firstProductIndex,
-    lastProductIndex
-  );
+  const currentProducts = data?.slice(firstProductIndex, lastProductIndex);
+
+  const handleClick = (e) => {
+    const btnName = e.target.textContent.toLowerCase();
+    setClickedAll(false);
+    setCategoryClicked(btnName);
+  };
+
+  const handleClickAll = () => {
+    setClickedAll(true);
+    setCategoryClicked("");
+  };
 
   return (
     <section>
-      <ul className="categories">
-        <li>
-          <button>All</button>
-        </li>
-        {categories?.map((category, idx) => (
-          <li key={idx}>
-            <button>{category.CatName}</button>
-          </li>
-        ))}
-      </ul>
+      <Categories
+        data={data}
+        handleClickAll={handleClickAll}
+        handleClick={handleClick}
+      />
       <ul className="products">
-        {currentProducts?.map(
-          ({ code: id, name, price, categoryName, images }) => (
+        {clickedAll &&
+          currentProducts?.map(({ id, title, price, category, image }) => (
             <ProductItem
               key={id}
-              name={name}
+              title={title}
               price={price}
-              categoryName={categoryName}
-              images={images}
+              category={category}
+              image={image}
             />
-          )
-        )}
+          ))}
+        {categoryClicked &&
+          productsByCategoryQuery?.data?.map(
+            ({ id, title, price, category, image }) => (
+              <ProductItem
+                key={id}
+                title={title}
+                price={price}
+                category={category}
+                image={image}
+              />
+            )
+          )}
       </ul>
-      <Pagination
-        totalProducts={data.results.length}
-        productsPerPage={productsPerPage}
-        setCurrentPage={setCurrentPage}
-        currentPage={currentPage}
-      />
+      {clickedAll && (
+        <Pagination
+          totalProducts={data.length}
+          productsPerPage={productsPerPage}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+        />
+      )}
     </section>
   );
 };
