@@ -1,22 +1,25 @@
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import { addToCart } from "../../slices/cartSlice";
+import { useDispatch } from "react-redux";
 
-// const ProductItem = ({ name, price, categoryName, images }) => {
-//   return (
-//     <li>
-//       <img src={images[0].baseUrl} alt="product" width="200px" />
-//       <h2>{name}</h2>
-//       <p>{categoryName}</p>
-//       <p>{price.formattedValue}</p>
-//     </li>
-//   );
-// };
-const ProductItem = ({ title, price, category, image }) => {
+const ProductItem = ({ id, title, price, category, image }) => {
+  const location = useLocation();
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(addToCart({ id, title, price, image }));
+  };
+
   return (
     <li>
-      <img src={image} alt="product" width="200px" />
-      <h2>{title}</h2>
+      <Link key={id} to={`/products/${id}`} state={location}>
+        <img src={image} alt={title} width="200px" />
+      </Link>
+      <h3>{title}</h3>
+      <p>Category: {category}</p>
       <p>{price}</p>
-      <p>{category}</p>
+      <button onClick={handleAddToCart}>Add to cart</button>
     </li>
   );
 };

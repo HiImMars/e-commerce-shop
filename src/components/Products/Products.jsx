@@ -54,6 +54,7 @@ const Products = () => {
           currentProducts?.map(({ id, title, price, category, image }) => (
             <ProductItem
               key={id}
+              id={id}
               title={title}
               price={price}
               category={category}
@@ -65,6 +66,7 @@ const Products = () => {
             ({ id, title, price, category, image }) => (
               <ProductItem
                 key={id}
+                id={id}
                 title={title}
                 price={price}
                 category={category}
