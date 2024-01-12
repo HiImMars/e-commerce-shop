@@ -33,7 +33,7 @@ const ProductDetails = () => {
         <h2>{data?.title}</h2>
         <p>Rate: {data?.rating.rate}</p>
         <p>{data?.category}</p>
-        <h3>{data?.price}</h3>
+        <h3>${data?.price}</h3>
         <p>{data?.description}</p>
         <button onClick={handleAddToCart}>Add to Cart</button>
       </div>
