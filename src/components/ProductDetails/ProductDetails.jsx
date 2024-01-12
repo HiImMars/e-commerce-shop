@@ -1,8 +1,8 @@
 import React from "react";
-import { useGetProductDetailsQuery } from "../../services/productsApi";
+import { useGetProductDetailsQuery } from "../../redux/services/productsApi";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../slices/cartSlice";
+import { addToCart } from "../../redux/slices/cartSlice";
 
 const ProductDetails = () => {
   const { id } = useParams();

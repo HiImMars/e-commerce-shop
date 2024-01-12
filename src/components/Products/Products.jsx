@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {
   useGetAllProductsQuery,
   useGetInSpecificCategoryQuery,
-} from "../../services/productsApi";
+} from "../../redux/services/productsApi";
 import ProductItem from "../ProductItem/ProductItem";
 import Pagination from "../Pagination/Pagination";
 import Categories from "../Categories/Categories";

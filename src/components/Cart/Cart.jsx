@@ -1,12 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
-import { clearCart, removeFromCart } from "../../slices/cartSlice";
+import { clearCart, removeFromCart } from "../../redux/slices/cartSlice";
+import { selectCartItems, selectTotalPrice } from "../../redux/selectors";
 
 const Cart = () => {
-  const cartItems = useSelector((state) => state.cart.items);
+  const cartItems = useSelector(selectCartItems);
+  const totalPrice = useSelector(selectTotalPrice);
   const dispatch = useDispatch();
 
-  const handleRemoveFromCart = (id) => {
-    dispatch(removeFromCart(id));
+  const handleRemoveFromCart = (item) => {
+    dispatch(removeFromCart(item));
   };
 
   const handleClearCart = () => {
@@ -17,18 +19,19 @@ const Cart = () => {
       <div>
         <h2>Your Cart</h2>
         <ul>
-          {cartItems?.map(({ id, title, image, price, quantity }) => (
-            <li key={id}>
-              <img src={image} alt="product" />
+          {cartItems?.map((item) => (
+            <li key={item.id}>
+              <img src={item.image} alt="product" />
               <div>
-                <h3>{title}</h3>
-                <p>{quantity}</p>
+                <h3>{item.title}</h3>
+                <p>({item.amount})</p>
               </div>
-              <p>${price}</p>
-              <button onClick={() => handleRemoveFromCart(id)}>Remove</button>
+              <p>${item.totalPrice.toFixed(2)}</p>
+              <button onClick={() => handleRemoveFromCart(item)}>Remove</button>
             </li>
           ))}
         </ul>
+        <p>Total Price: ${Math.ceil(totalPrice).toFixed(2)}</p>
         <button onClick={handleClearCart}>Clear Cart</button>
       </div>
     </>

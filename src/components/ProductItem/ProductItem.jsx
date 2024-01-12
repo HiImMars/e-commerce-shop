@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { addToCart } from "../../slices/cartSlice";
+import { addToCart } from "../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
 
 const ProductItem = ({ id, title, price, category, image }) => {
@@ -18,7 +18,7 @@ const ProductItem = ({ id, title, price, category, image }) => {
       </Link>
       <h3>{title}</h3>
       <p>Category: {category}</p>
-      <p>{price}</p>
+      <p>${price}</p>
       <button onClick={handleAddToCart}>Add to cart</button>
     </li>
   );
