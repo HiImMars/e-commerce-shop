@@ -1,10 +1,9 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { addToCart } from "../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
 
 const ProductItem = ({ id, title, price, category, image }) => {
-  const location = useLocation();
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
@@ -13,7 +12,7 @@ const ProductItem = ({ id, title, price, category, image }) => {
 
   return (
     <li>
-      <Link key={id} to={`/products/${id}`} state={location}>
+      <Link key={id} to={`/products/${id}`}>
         <img src={image} alt={title} width="200px" />
       </Link>
       <h3>{title}</h3>

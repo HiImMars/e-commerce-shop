@@ -1,6 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-import { clearCart, removeFromCart } from "../../redux/slices/cartSlice";
+import {
+  addToCart,
+  clearCart,
+  removeFromCart,
+} from "../../redux/slices/cartSlice";
 import { selectCartItems, selectTotalPrice } from "../../redux/selectors";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const cartItems = useSelector(selectCartItems);
@@ -14,6 +19,11 @@ const Cart = () => {
   const handleClearCart = () => {
     dispatch(clearCart());
   };
+
+  const handleAddOneMore = (item) => {
+    dispatch(addToCart(item));
+  };
+
   return (
     <>
       <div>
@@ -21,17 +31,22 @@ const Cart = () => {
         <ul>
           {cartItems?.map((item) => (
             <li key={item.id}>
-              <img src={item.image} alt="product" />
+              <Link to={`/products/${item.id}`}>
+                <img src={item.image} alt="product" width="200" />
+              </Link>
               <div>
                 <h3>{item.title}</h3>
-                <p>({item.amount})</p>
               </div>
               <p>${item.totalPrice.toFixed(2)}</p>
-              <button onClick={() => handleRemoveFromCart(item)}>Remove</button>
+              <div>
+                <button onClick={() => handleRemoveFromCart(item)}>-</button>
+                <p>{item.amount}</p>
+                <button onClick={() => handleAddOneMore(item)}>+</button>
+              </div>
             </li>
           ))}
         </ul>
-        <p>Total Price: ${Math.ceil(totalPrice).toFixed(2)}</p>
+        <p>Total Price: ${totalPrice.toFixed(2)}</p>
         <button onClick={handleClearCart}>Clear Cart</button>
       </div>
     </>
