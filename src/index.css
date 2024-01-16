@@ -1,14 +1,12 @@
-@import "modern-normalize/modern-normalize.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
-  margin: 0;
-  font-family: "Comfortaa", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #e4e4e4;
+  background-color: #f2f2f2;
 }
 
-h1,
+/* h1,
 h2,
 h3,
 h4,
@@ -37,4 +35,4 @@ button {
 
 a {
   text-decoration: none;
-}
+} */
