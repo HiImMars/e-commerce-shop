@@ -1,6 +1,6 @@
 import React from "react";
 
-const Categories = ({ data, handleClickAll, handleClick, state }) => {
+const Categories = ({ data, handleClickAll, handleClick }) => {
   const uniqueCategories = new Set();
 
   data?.forEach((product) => {
@@ -19,7 +19,7 @@ const Categories = ({ data, handleClickAll, handleClick, state }) => {
           </button>
         </li>
         {[...uniqueCategories].map((category, idx) => (
-          <li key={idx} state={state}>
+          <li key={idx}>
             <button
               onClick={handleClick}
               className="p-3 shadow-[0_1px_2px_0_rgb(60,64,67,0.3),0_2px_6px_2px_rgb(60,64,67,0.15)] hover:bg-lightGrey hover:text-white focus:bg-lightGrey focus:text-white active:bg-lightGrey rounded-md duration-300"
