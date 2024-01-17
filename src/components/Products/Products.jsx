@@ -43,7 +43,7 @@ const Products = () => {
   };
 
   return (
-    <section>
+    <section className="py-[60px]">
       <Categories
         data={data}
         handleClickAll={handleClickAll}

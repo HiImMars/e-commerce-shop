@@ -9,13 +9,21 @@ const Categories = ({ data, handleClickAll, handleClick, state }) => {
 
   return (
     <div>
-      <ul className="categories">
+      <ul className="flex justify-center items-center flex-wrap text-darkBlue gap-4 text-xl md:text-2xl">
         <li>
-          <button onClick={handleClickAll}>All</button>
+          <button
+            onClick={handleClickAll}
+            className="p-3 shadow-[0_1px_2px_0_rgb(60,64,67,0.3),0_2px_6px_2px_rgb(60,64,67,0.15)] hover:bg-lightGrey hover:text-white focus:bg-lightGrey focus:text-white active:bg-lightGrey rounded-md duration-300"
+          >
+            All
+          </button>
         </li>
         {[...uniqueCategories].map((category, idx) => (
           <li key={idx} state={state}>
-            <button onClick={handleClick}>
+            <button
+              onClick={handleClick}
+              className="p-3 shadow-[0_1px_2px_0_rgb(60,64,67,0.3),0_2px_6px_2px_rgb(60,64,67,0.15)] hover:bg-lightGrey hover:text-white focus:bg-lightGrey focus:text-white active:bg-lightGrey rounded-md duration-300"
+            >
               {category.charAt(0).toUpperCase() + category.slice(1)}
             </button>
           </li>

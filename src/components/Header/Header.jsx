@@ -8,7 +8,7 @@ const Header = () => {
   const totalAmount = useSelector(selectTotalAmount);
 
   return (
-    <header className="shadow-md">
+    <header className="shadow-md sticky z-50 top-0 bg-header">
       <div className="container flex justify-between items-center">
         <Link to="/">
           <h2 className="text-4xl font-bold text-darkBlue p-4 hover:text-lightBlue focus:text-lightBlue">

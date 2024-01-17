@@ -4,8 +4,9 @@ module.exports = {
   theme: {
     extend: {},
     colors: {
-      grey: "#666666",
-      darkGrey: "#3366cc",
+      grey: "#333333",
+      lightGrey: "#9ca3af",
+      header: "#f2f2f2",
       orange: "#f59e0b",
       lightOrange: "#f9c77e",
       white: "#ffffff",
@@ -14,13 +15,6 @@ module.exports = {
     },
     container: {
       center: true,
-      // padding: {
-      //   DEFAULT: "1rem",
-      //   sm: "2rem",
-      //   lg: "4rem",
-      //   xl: "5rem",
-      //   "2xl": "6rem",
-      // },
     },
   },
   plugins: [],
