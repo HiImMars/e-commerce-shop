@@ -1,5 +1,4 @@
 import React from "react";
-import css from "./Pagination.module.css";
 
 const Pagination = ({
   totalProducts,
@@ -14,13 +13,15 @@ const Pagination = ({
   }
 
   return (
-    <div>
+    <div className="flex justify-center items-center gap-1">
       {pages?.map((page, index) => {
         return (
           <button
             key={index}
             onClick={() => setCurrentPage(page)}
-            className={page === currentPage ? `${css.active}` : ""}
+            className={`text-white p-2 text-xl rounded-md font-semibold w-7 hover:bg-lightBlue ${
+              page === currentPage ? "bg-darkBlue" : "bg-lightGrey"
+            }`}
           >
             {page}
           </button>

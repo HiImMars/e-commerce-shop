@@ -43,13 +43,13 @@ const Products = () => {
   };
 
   return (
-    <section className="py-[60px]">
+    <section className="py-[60px] container">
       <Categories
         data={data}
         handleClickAll={handleClickAll}
         handleClick={handleClick}
       />
-      <ul className="products">
+      <ul className="products flex flex-col justify-center items-center gap-8 md:flex-row md:flex-wrap mb-7">
         {clickedAll &&
           currentProducts?.map(({ id, title, price, category, image }) => (
             <ProductItem

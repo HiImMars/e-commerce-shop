@@ -9,7 +9,7 @@ const Categories = ({ data, handleClickAll, handleClick }) => {
 
   return (
     <div>
-      <ul className="flex justify-center items-center flex-wrap text-darkBlue gap-4 text-xl md:text-2xl">
+      <ul className="flex justify-center items-center flex-wrap text-darkBlue gap-4 text-xl md:text-2xl pb-10">
         <li>
           <button
             onClick={handleClickAll}
