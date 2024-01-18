@@ -12,6 +12,8 @@ module.exports = {
       white: "#ffffff",
       darkBlue: "#1e40af",
       lightBlue: "#7ea5d8",
+      red: "#dc2626",
+      green: "#65a30d",
     },
     container: {
       center: true,

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { addToCart } from "../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
 import { LuShoppingBag } from "react-icons/lu";
+import { Notify } from "notiflix/build/notiflix-notify-aio";
 import "animate.css/animate.css";
 
 const ProductItem = ({ id, title, price, category, image }) => {
@@ -12,6 +13,7 @@ const ProductItem = ({ id, title, price, category, image }) => {
   const handleAddToCart = () => {
     dispatch(addToCart({ id, title, price, image }));
     setAddedToCart(true);
+    Notify.success("Item successfully added to cart!");
 
     setTimeout(() => setAddedToCart(false), 1000);
   };

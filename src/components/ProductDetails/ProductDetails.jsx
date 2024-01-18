@@ -3,6 +3,7 @@ import { useGetProductDetailsQuery } from "../../redux/services/productsApi";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/slices/cartSlice";
+import { Notify } from "notiflix/build/notiflix-notify-aio";
 
 const ProductDetails = () => {
   const [addedToCart, setAddedToCart] = useState(false);
@@ -17,6 +18,7 @@ const ProductDetails = () => {
   const handleAddToCart = () => {
     dispatch(addToCart({ id: Number(id), title, price, image }));
     setAddedToCart(true);
+    Notify.success("Item successfully added to cart!");
 
     setTimeout(() => setAddedToCart(false), 1000);
   };
@@ -25,7 +27,7 @@ const ProductDetails = () => {
   if (isError) return <p>Error happened</p>;
 
   return (
-    <section className="min-h-[100vh] py-[40px] bg-white">
+    <section className="min-h-[90vh] py-[40px] bg-white">
       <div className="container px-3 md:px-8 flex flex-col md:flex-row justify-center items-center gap-8">
         <img
           src={data?.image}
@@ -37,7 +39,7 @@ const ProductDetails = () => {
             {data?.title}
           </h2>
           <p className="text-xl ">
-            Rate: {data?.rating.rate} ({data?.rating.count})
+            Rate: {data?.rating.rate} ({data?.rating.count} reviews)
           </p>
           <p className="text-lg">
             Category:{" "}
@@ -45,8 +47,8 @@ const ProductDetails = () => {
               {data?.category}
             </span>
           </p>
-          <p className="text-darkBlue text-2xl">${data?.price}</p>
           <p className="text-lg">{data?.description}</p>
+          <p className="text-darkBlue text-2xl">${data?.price}</p>
           <button
             onClick={handleAddToCart}
             className={`p-5 shadow-[0_1px_2px_0_rgb(60,64,67,0.3),0_2px_6px_2px_rgb(60,64,67,0.15)] rounded-lg self-center text-darkBlue font-bold text-[26px] hover:text-white hover:bg-lightGrey duration-200 animate__animated ${
