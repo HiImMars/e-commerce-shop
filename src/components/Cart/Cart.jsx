@@ -8,6 +8,12 @@ import { selectCartItems, selectTotalPrice } from "../../redux/selectors";
 import { Link } from "react-router-dom";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 
+Notify.init({
+  width: "380px",
+  position: "center-top",
+  fontSize: "18px",
+});
+
 const Cart = () => {
   const cartItems = useSelector(selectCartItems);
   const totalPrice = useSelector(selectTotalPrice);

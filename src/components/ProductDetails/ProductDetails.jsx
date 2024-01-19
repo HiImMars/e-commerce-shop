@@ -5,6 +5,12 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/slices/cartSlice";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 
+Notify.init({
+  width: "380px",
+  position: "center-top",
+  fontSize: "18px",
+});
+
 const ProductDetails = () => {
   const [addedToCart, setAddedToCart] = useState(false);
   const { id } = useParams();

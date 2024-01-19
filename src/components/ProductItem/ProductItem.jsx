@@ -6,6 +6,12 @@ import { LuShoppingBag } from "react-icons/lu";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 import "animate.css/animate.css";
 
+Notify.init({
+  width: "380px",
+  position: "center-top",
+  fontSize: "18px",
+});
+
 const ProductItem = ({ id, title, price, category, image }) => {
   const [addedToCart, setAddedToCart] = useState(false);
   const dispatch = useDispatch();
