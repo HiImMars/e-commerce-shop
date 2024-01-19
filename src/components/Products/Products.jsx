@@ -7,6 +7,14 @@ import ProductItem from "../ProductItem/ProductItem";
 import Pagination from "../Pagination/Pagination";
 import Categories from "../Categories/Categories";
 import { ThreeCircles } from "react-loader-spinner";
+import { Notify } from "notiflix";
+
+Notify.init({
+  width: "300px",
+  position: "center-top",
+  fontSize: "18px",
+  timeout: 20000,
+});
 
 const Products = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -36,7 +44,7 @@ const Products = () => {
   }
 
   if (productsQuery.isError || productsByCategoryQuery.isError) {
-    return <p>Error loading data</p>;
+    return Notify.failure("Error loading data");
   }
 
   const productsPerPage = 6;

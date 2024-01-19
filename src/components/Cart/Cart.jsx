@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 
 Notify.init({
-  width: "380px",
+  width: "300px",
   position: "center-top",
   fontSize: "18px",
 });

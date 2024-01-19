@@ -7,7 +7,7 @@ import { Notify } from "notiflix/build/notiflix-notify-aio";
 import "animate.css/animate.css";
 
 Notify.init({
-  width: "380px",
+  width: "300px",
   position: "center-top",
   fontSize: "18px",
 });
