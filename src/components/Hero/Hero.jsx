@@ -6,9 +6,9 @@ const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const slides = [
-    { url: "/images/tv.jpg" },
-    { url: "/images/fjall.jpg" },
-    { url: "/images/jewelry.jpg" },
+    { url: "images/tv.jpg" },
+    { url: "images/fjall.jpg" },
+    { url: "images/jewelry.jpg" },
   ];
 
   const prevSlide = () => {
@@ -36,6 +36,7 @@ const Hero = () => {
           style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
           className="w-full h-full rounded-2xl bg-center bg-cover duration-500"
         ></div>
+
         {currentIndex === 0 && (
           <p className="absolute text-[20px] md:text-[40px] lg:text-[60px] text-white bottom-[20%] right-[10%]">
             ANYTHING THAT YOU WANT

@@ -6,6 +6,7 @@ import {
 import ProductItem from "../ProductItem/ProductItem";
 import Pagination from "../Pagination/Pagination";
 import Categories from "../Categories/Categories";
+import { ThreeCircles } from "react-loader-spinner";
 
 const Products = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -19,7 +20,19 @@ const Products = () => {
   const data = productsQuery.data;
 
   if (productsQuery.isLoading || productsByCategoryQuery.isLoading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="mx-auto flex justify-center items-center w-[100%]">
+        <ThreeCircles
+          visible={true}
+          height="100"
+          width="100"
+          color="#ffa200"
+          ariaLabel="three-circles-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+        />
+      </div>
+    );
   }
 
   if (productsQuery.isError || productsByCategoryQuery.isError) {
