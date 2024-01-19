@@ -6,9 +6,9 @@ const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const slides = [
-    { url: "images/tv.jpg" },
-    { url: "images/fjall.jpg" },
-    { url: "images/jewelry.jpg" },
+    { url: "/images/tv.jpg" },
+    { url: "/images/fjall.jpg" },
+    { url: "/images/jewelry.jpg" },
   ];
 
   const prevSlide = () => {
